@@ -18,15 +18,16 @@ describe(Task) do
     end
   end
 
-  describe('the database connection') do
-    it('') do
-      to_do_db = PG.connect({:dbname => 'to_do_list_testing'})
-      task_objects = to_do_db.exec('SELECT * FROM tasks;')
-      tasks = []
-      task_objects.each do |task_row|
-        tasks.push(task_row)
-      end
-      expect(tasks[0]['id']).to(eq('1'))
+  describe('.all') do
+    it('returns an array of hashes representing the rows') do
+      # DB = PG.connect({:dbname => 'to_do_list_testing'})
+      # task_objects = DB.exec('SELECT * FROM tasks;')
+      # tasks = []
+      expect(Task.all).to(eq([]))
+      # task_objects.each do |task_row|
+      #   tasks.push(task_row)
+      # end
+      # expect(tasks[0]['id']).to(eq('1'))
     end
   end
 end
