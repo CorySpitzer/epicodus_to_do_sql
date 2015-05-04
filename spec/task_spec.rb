@@ -1,5 +1,6 @@
 require('rspec')
 require('task')
+require('pg')
 
 describe(Task) do
   describe('#description') do
@@ -20,14 +21,29 @@ describe(Task) do
 
   describe('.all') do
     it('returns an array of hashes representing the rows') do
+      expect(Task.all).to(eq([]))
+    end
+
+    it('returns an array of hashes representing the rows') do
       # DB = PG.connect({:dbname => 'to_do_list_testing'})
       # task_objects = DB.exec('SELECT * FROM tasks;')
       # tasks = []
-      expect(Task.all).to(eq([]))
       # task_objects.each do |task_row|
       #   tasks.push(task_row)
       # end
-      # expect(tasks[0]['id']).to(eq('1'))
+      expect(@@tasks.all[0]).to(eq({"id"=>"1",
+                     "description"=>"Eat Perogies",
+                       "completed"=>"t",
+                             "due"=>"2015-05-10",
+                         "list_id"=>"1"}))
+    end
+  end
+
+  describe("#save") do
+    it("inserts a task into the list of tasks") do
+      tasks = Task.new()
+      tasks.save()
+      expect(Task.all()).to(eq([tasks]))
     end
   end
 end
