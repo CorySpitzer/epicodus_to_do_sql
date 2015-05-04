@@ -17,4 +17,26 @@ describe(Task) do
       expect(drink_beer.completed).to(eq(true))
     end
   end
+
+  describe('the database connection') do
+    it('') do
+      to_do_db = PG.connect({:dbname => 'to_do_list_testing'})
+      task_objects = to_do_db.exec('SELECT * FROM tasks;')
+      tasks = []
+      task_objects.each do |task_row|
+        tasks.push(task_row)
+      end
+      expect(tasks[0]['id']).to(eq('1'))
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+#
