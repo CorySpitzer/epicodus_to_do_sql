@@ -1,7 +1,20 @@
 require('rspec')
+require('pg')
 require('task')
 
+DB = PG.connect({:dbname => 'to_do_list_testing'})
+
+RSpec.configure do |config|
+  config.after(:each) do
+    DB.exec('DELETE FROM tasks *;')
+  end
+end
+
 describe(Task) do
+  before() do
+    Task.clear
+  end
+
   describe('#description') do
     it('sets and gets a description') do
       drink_beer = Task.new()
@@ -82,6 +95,18 @@ describe(Task) do
       task.save()
       Task.clear()
       expect(Task.all()).to(eq([]))
+    end
+  end
+
+  describe('#==') do
+    it('is the same task if it has the same description and same due date') do
+      task = Task.new()
+      task.description = 'drink beer'
+      task.due = '2015-05-05'
+      task2 = Task.new()
+      task2.description = 'drink beer'
+      task2.due = '2015-05-05'
+      expect(task.==(task2)).to(eq(true))
     end
   end
 end

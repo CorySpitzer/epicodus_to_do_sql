@@ -1,12 +1,13 @@
 class Task
   attr_accessor :description, :completed, :due, :list_id, :id
   @@tasks = []
-  # @@all_task_ids = []
 
   define_method(:initialize) do
     @description = nil
     @completed = false
     @id = nil
+    @list_id = nil
+    @due = nil
   end
 
   define_singleton_method(:all) do
@@ -15,24 +16,11 @@ class Task
 
   define_method(:save) do
     @@tasks.push(self)
-    # @@all_task_ids.push(self.id)
   end
 
   define_singleton_method(:clear) do
     @@tasks = []
   end
-
-  # define_singleton_method(:all_task_ids) do
-  #   @@all_task_ids
-  # end
-
-  # define_singleton_method(:bfind) do |id_to_find|
-  #   Task.all_task_ids.sort.bsearch do |task_id|
-  #     if task_id == id_to_find
-  #       task
-  #     end
-  #   end
-  # end
 
   define_singleton_method(:find) do |id|
     return_task = nil
@@ -42,6 +30,10 @@ class Task
       end
     end
     return_task
+  end
+
+  define_method(:==) do |task|
+    task.description == self.description and task.due == self.due
   end
 
 end
