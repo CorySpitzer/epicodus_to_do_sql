@@ -34,15 +34,17 @@ describe(Task) do
   describe('#save') do
     it('saves a task') do
       task = Task.new()
-      task.description = 'Drink beer!'
       task.save()
       expect(Task.all()).to(eq([task]))
     end
   end
 
   describe('.clear') do
-    it('') do
-
+    it('will clear saved values from the array') do
+      task = Task.new()
+      task.save()
+      Task.clear()
+      expect(Task.all()).to(eq([]))
     end
   end
 

@@ -14,4 +14,8 @@ class Task
     @@tasks.push(self)
   end
 
+  define_singleton_method(:clear) do
+    @@tasks = []
+  end
+
 end
