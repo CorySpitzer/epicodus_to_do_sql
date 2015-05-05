@@ -1,0 +1,19 @@
+<h2>Lists:</h2>
+
+<%= @title %>
+
+<% if @lists.any? %>
+
+  <h3>Here are all the lists</h3>
+  <ul>
+    <% @list.each do |list| %>
+      <li>
+        <a href="/lists/<%= list.id %>"><%= list.title %></a>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have nothing to do, Celebrate! </p>
+<% end %>
+
+<a href='/'>Home</a>

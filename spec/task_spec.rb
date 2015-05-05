@@ -125,7 +125,7 @@ describe(Task) do
       task2.description = 'drink beer'
       task2.due = '2015-05-05'
       expect(task.==(task2)).to(eq(true))
->>>>>>> cs_and_ib
+#>>>>>>> cs_and_ib
     end
   end
 end
