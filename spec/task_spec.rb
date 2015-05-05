@@ -70,6 +70,7 @@ describe(Task) do
 
   describe('#save') do
     it('saves a task') do
+      Task.clear
       task = Task.new()
       task.save()
       expect(Task.all()).to(eq([task]))
@@ -78,6 +79,7 @@ describe(Task) do
 
   describe('.find') do
     it('will find a particular task based on task id') do
+      Task.clear
       task = Task.new()
       task.id = 1
       task.save()
