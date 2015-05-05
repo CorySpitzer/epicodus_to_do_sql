@@ -9,7 +9,12 @@ class List
   end
 
   define_singleton_method(:all) do
-    @@lists
+    db_lists = DB.exec("SELECT * FROM lists;")
+    out_lists = []
+    db_lists.each do |list| #list is a hash
+      out_lists.push(list)
+    end
+    out_lists
   end
 
   define_method(:save) do
