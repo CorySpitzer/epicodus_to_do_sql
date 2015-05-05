@@ -14,6 +14,9 @@ end
 
 post('/lists') do
   @title = params.fetch('title')
+  # We need @lists here as well, because there are
+  # different ways to get to lists
+  @lists = List.all()
   erb(:lists)
 end
 
