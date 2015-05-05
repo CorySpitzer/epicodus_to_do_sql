@@ -3,6 +3,10 @@ require('list')
 
 
 describe(List) do
+  before() do
+    List.clear
+  end
+
   describe('#title') do
     it('gets or sets the title') do
       list = List.new({:title => "Groceries", :id => nil})
@@ -19,4 +23,26 @@ describe(List) do
     end
   end
 
+  describe('.all') do
+    it('initially return an empty array') do
+      expect(List.all).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('will save values in the tasks array') do
+      list = List.new({:title => 'Groceries', :id => nil})
+      list.save
+      expect(List.all).to(eq([list]))
+    end
+  end
+
+  describe('.clear') do
+    it('will clear entries from tasks array') do
+      list = List.new({:title => 'Groceries', :id => nil})
+      list.save
+      List.clear
+      expect(List.all).to(eq([]))
+    end
+  end
 end
