@@ -11,9 +11,9 @@ RSpec.configure do |config|
 end
 
 describe(List) do
-  before() do
-    List.clear
-  end
+  # before() do
+  #   List.clear
+  # end
 
   describe('#title') do
     it('gets or sets the title') do
@@ -51,6 +51,14 @@ describe(List) do
       list.save
       List.clear
       expect(List.all).to(eq([]))
+    end
+  end
+
+  describe('#==') do
+    it('makes two lists equal if they have the same title') do
+      list = List.new({:title => 'hamburger', :id => nil})
+      list2 = List.new({:title => 'hamburger', :id => nil})
+      expect(list).to(eq(list2))
     end
   end
 end

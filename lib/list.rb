@@ -19,4 +19,9 @@ class List
   define_singleton_method(:clear) do
     @@lists = []
   end
+
+  define_method(:==) do |another_list|
+    self.title().== another_list.title
+  end
+
 end
