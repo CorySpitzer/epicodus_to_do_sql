@@ -30,6 +30,22 @@ describe(Task) do
       # expect(tasks[0]['id']).to(eq('1'))
     end
   end
+
+  describe('#save') do
+    it('saves a task') do
+      task = Task.new()
+      task.description = 'Drink beer!'
+      task.save()
+      expect(Task.all()).to(eq([task]))
+    end
+  end
+
+  describe('.clear') do
+    it('') do
+
+    end
+  end
+
 end
 
 

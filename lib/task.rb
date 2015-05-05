@@ -10,4 +10,8 @@ class Task
     @@tasks
   end
 
+  define_method(:save) do
+    @@tasks.push(self)
+  end
+
 end
