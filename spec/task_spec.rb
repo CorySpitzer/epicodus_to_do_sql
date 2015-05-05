@@ -18,6 +18,30 @@ describe(Task) do
     end
   end
 
+  describe('#due') do
+    it('set and gets the due date') do
+      task = Task.new()
+      task.due = '2015-05-12'
+      expect(task.due()).to(eq('2015-05-12'))
+    end
+  end
+
+  describe('#list_id') do
+    it('will set or get a list id') do
+      task = Task.new()
+      task.list_id = 1
+      expect(task.list_id()).to(eq(1))
+    end
+  end
+
+  describe('#id') do
+    it('will set or get the id') do
+      task = Task.new()
+      task.id = 1
+      expect(task.id()).to(eq(1))
+    end
+  end
+
   describe('.all') do
     it('returns an array of hashes representing the rows') do
       # DB = PG.connect({:dbname => 'to_do_list_testing'})
@@ -47,7 +71,6 @@ describe(Task) do
       expect(Task.all()).to(eq([]))
     end
   end
-
 end
 
 
