@@ -41,7 +41,7 @@ describe(List) do
     it('will save values in the tasks array') do
       list = List.new({:title => 'Groceries', :id => nil})
       list.save
-      expect(List.all).to(eq([list]))
+      expect(List.all[0]['title']).to(eq('Groceries'))
     end
   end
 

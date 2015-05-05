@@ -1,7 +1,7 @@
 class List
   attr_accessor :title, :id
 
-  @@lists = []
+  # @@lists = []
 
   define_method(:initialize) do |params|
     @title = params.fetch(:title)
@@ -18,11 +18,11 @@ class List
   end
 
   define_method(:save) do
-    @@lists.push(self)
+    DB.exec("INSERT INTO lists (title) VALUES ('#{@title}') RETURNING id;")
   end
 
   define_singleton_method(:clear) do
-    @@lists = []
+    DB.exec("DELETE FROM lists *;")
   end
 
   define_method(:==) do |another_list|
