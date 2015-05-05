@@ -63,6 +63,19 @@ describe(Task) do
     end
   end
 
+  describe('.find') do
+    it('will find a particular task based on task id') do
+      task = Task.new()
+      task.id = 1
+      task.save()
+      task2 = Task.new()
+      task2.id = 2
+      task2.save()
+      expect(Task.find(task.id())).to(eq(task))
+    end
+  end
+
+
   describe('.clear') do
     it('will clear saved values from the array') do
       task = Task.new()
