@@ -1,4 +1,6 @@
-class Task
+class Task < ActiveRecord::Base
+  belongs_to(:list)
+
   attr_accessor :description, :completed, :due, :list_id, :id
   # @@tasks = []
 
