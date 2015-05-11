@@ -5,3 +5,7 @@
   <button type='submit'>Add List</button>
 </form>
 <a href="/lists">All lists</a>
+
+<% @tasks.each() do |task| %>
+  <li><%= task.description %> <a href="/tasks/<% task.id() %>/edit">Update this task's description</a></li>
+<% end %>

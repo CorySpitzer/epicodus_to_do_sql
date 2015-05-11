@@ -5,14 +5,14 @@ require('pg')
 require('task')
 require('list')
 require('pry')
-require('activerecord')
+require('sinatra/activerecord')
 
 
-#
-# RSpec.configure do |config|
-#   config.after(:each) do
-#     DB.exec("DELETE FROM clients *;")
-#     DB.exec("DELETE FROM stylists *;")
-#     DB.exec("DELETE FROM stylists_clients *;")
-#   end
-# end
+
+RSpec.configure do |config|
+  config.after(:each) do
+    Task.all.each do |task|
+      task.destroy
+    end
+  end
+end
