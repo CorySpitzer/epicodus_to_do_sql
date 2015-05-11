@@ -9,13 +9,13 @@ require('pry')
 
 
 get('/') do
+  @tasks = Task.all
   erb(:index)
 end
 
 post('/lists') do
-  @title = params.fetch('title')
-  # We need @lists here as well, because there are
-  # different ways to get to lists
+  @name = params.fetch('name')
+  @tasks = Task.all
   @lists = List.all()
   erb(:lists)
 end

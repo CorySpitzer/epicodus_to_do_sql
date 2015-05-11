@@ -6,9 +6,9 @@
 
   <h3>Here are all the lists</h3>
   <ul>
-    <% @list.each do |list| %>
+    <% @lists.each do |list| %>
       <li>
-        <a href="/lists/<%= list.id %>"><%= list.title %></a>
+        <a href="/lists/<%= list.id %>"><%= list.name %></a>
       </li>
     <% end %>
   </ul>
