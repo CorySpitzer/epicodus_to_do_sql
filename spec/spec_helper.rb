@@ -1,11 +1,11 @@
 ENV['RACK_ENV'] = 'test'
 
+require('sinatra/activerecord')
 require('rspec')
 require('pg')
 require('task')
 require('list')
 require('pry')
-require('sinatra/activerecord')
 
 
 
